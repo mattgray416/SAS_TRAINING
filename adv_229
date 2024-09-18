@@ -1,0 +1,15 @@
+proc sql noprint;
+    select teacher 
+    into :teach1-
+    from certadv.schedule;
+quit;
+
+%put _USER_;
+
+%macro putloop;
+%let i=1;
+%do i=1 %to &sqlobs;
+%put TEACH&i is &&teach&i;
+%end;
+%mend;
+%putloop
